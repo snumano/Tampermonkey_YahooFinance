@@ -1,0 +1,32 @@
+// ==UserScript==
+// @name         Yahoo Finance(My Holdings)
+// @namespace    http://workaround.jp/
+// @version      0.2
+// @description  add chart to Yahoo Finance portfolio
+// @author       snumano
+// @match        https://finance.yahoo.com/portfolio/*/view/v2
+// @grant        none
+// @require      https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js
+// ==/UserScript==
+
+var $ = window.jQuery;
+var result;
+
+(function() {
+    'use strict';
+
+    window.onload = function(){
+        $('th.Fw\\(400\\).Py\\(5px\\).Px\\(10px\\).Bgc\\(\\$hoverBgColor\\)\\:h.Ta\\(start\\)').after('<th>1d</th><th>5d</th><th>1m</th><th>3m</th><th>6d</th><th>1y</th><th>5y</th>');
+        $('a.Fw\\(b\\).Mb\\(2px\\).D\\(ib\\).C\\(searchBdrFoc\\).Fz\\(s\\).Td\\(n\\).Ell').each(function(index,element){
+            //console.log(index +':'+$(element).text());
+            $(element).parent().parent().parent().find("td:nth-child(10)").after('<td><a href="https://stocks.finance.yahoo.co.jp/us/detail/' + $(element).text() + '" target="_blank"><img src="https://www.trkd-asia.com/rakutensecus/genChart.jsp?sym=' + $(element).text() + '&mode=1&int=2&per=1&top=1&toparg=&bottom=1&style=1&width=536&height=290&tpoint=" width="100%" height="100%"></a></td>');
+            $(element).parent().parent().parent().find("td:nth-child(11)").after('<td><a href="https://stocks.finance.yahoo.co.jp/us/detail/' + $(element).text() + '" target="_blank"><img src="https://www.trkd-asia.com/rakutensecus/genChart.jsp?sym=' + $(element).text() + '&mode=1&int=4&per=3&top=1&toparg=&bottom=1&style=1&width=536&height=290&tpoint=" width="100%" height="100%"></a></td>');
+            $(element).parent().parent().parent().find("td:nth-child(12)").after('<td><a href="https://stocks.finance.yahoo.co.jp/us/detail/' + $(element).text() + '" target="_blank"><img src="https://www.trkd-asia.com/rakutensecus/genChart.jsp?sym=' + $(element).text() + '&mode=1&int=5&per=2&top=1&toparg=&bottom=1&style=1&width=536&height=290&tpoint=" width="100%" height="100%"></a></td>');
+            $(element).parent().parent().parent().find("td:nth-child(13)").after('<td><a href="https://stocks.finance.yahoo.co.jp/us/detail/' + $(element).text() + '" target="_blank"><img src="https://www.trkd-asia.com/rakutensecus/genChart.jsp?sym=' + $(element).text() + '&mode=1&int=5&per=4&top=1&toparg=&bottom=1&style=1&width=536&height=290&tpoint=" width="100%" height="100%"></a></td>');
+            $(element).parent().parent().parent().find("td:nth-child(14)").after('<td><a href="https://stocks.finance.yahoo.co.jp/us/detail/' + $(element).text() + '" target="_blank"><img src="https://www.trkd-asia.com/rakutensecus/genChart.jsp?sym=' + $(element).text() + '&mode=1&int=5&per=5&top=1&toparg=&bottom=1&style=1&width=536&height=290&tpoint=" width="100%" height="100%"></a></td>');
+            $(element).parent().parent().parent().find("td:nth-child(15)").after('<td><a href="https://stocks.finance.yahoo.co.jp/us/detail/' + $(element).text() + '" target="_blank"><img src="https://www.trkd-asia.com/rakutensecus/genChart.jsp?sym=' + $(element).text() + '&mode=1&int=6&per=8&top=1&toparg=&bottom=1&style=1&width=536&height=290&tpoint=" width="100%" height="100%"></a></td>');
+            $(element).parent().parent().parent().find("td:nth-child(16)").after('<td><a href="https://stocks.finance.yahoo.co.jp/us/detail/' + $(element).text() + '" target="_blank"><img src="https://www.trkd-asia.com/rakutensecus/genChart.jsp?sym=' + $(element).text() + '&mode=1&int=7&per=12&top=1&toparg=&bottom=1&style=1&width=536&height=290&tpoint=" width="100%" height="100%"></a></td>');
+
+        });
+    };
+})();
